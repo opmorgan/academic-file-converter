@@ -150,13 +150,14 @@ def parse_bibtex_entry(
     page.yaml["featured"] = featured
 
     # Publication name.
-    # This field is Markdown formatted, wrapping the publication name in `*` for italics
     if "booktitle" in entry:
-        publication = "*" + clean_bibtex_str(entry["booktitle"]) + "*"
+        publication = clean_bibtex_str(entry["booktitle"])
     elif "journal" in entry:
-        publication = "*" + clean_bibtex_str(entry["journal"]) + "*"
+        publication = clean_bibtex_str(entry["journal"])
+    elif "journaltitle" in entry:
+        publication = clean_bibtex_str(entry["journaltitle"])
     elif "publisher" in entry:
-        publication = "*" + clean_bibtex_str(entry["publisher"]) + "*"
+        publication = clean_bibtex_str(entry["publisher"])
     else:
         publication = ""
     page.yaml["publication"] = publication
